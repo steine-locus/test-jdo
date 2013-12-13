@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<orm xmlns="http://xmlns.jcp.org/xml/ns/jdo/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/orm
+                        http://xmlns.jcp.org/xml/ns/jdo/orm_3_0.xsd" version="3.0">
+
+    <package name="mydomain.model">
+    
+        <class name="GridDO" identity-type="application" table="entity">
+            <field name="id" primary-key="true">
+                <column name="entity_id"/>
+            </field>
+            <field name="name">
+                <column name="name" length="100" allows-null="false"/>
+            </field>
+            <field name="columns">
+                <collection element-type="mydomain.model.GridColumnDO"/>
+                <element column="entity_id"/>
+            </field>
+            <query name="FindByName" language="javax.jdo.query.JDOQL"><![CDATA[
+                SELECT FROM 
+                    mydomain.model.GridDO 
+                WHERE 
+                    name == nameParam 
+                PARAMETERS 
+                    String nameParam
+            ]]></query>
+        </class>
+            
+        <class name="GridColumnDO" identity-type="application" table="entity_attribute">
+            <field name="id" primary-key="true">
+                <column name="entity_attribute_id"/>
+            </field>
+            <field name="displayOrder">
+                <column name="column_order"/>
+            </field>
+            <field name="displayName">
+                <column name="display_name" length="100"/>
+            </field>
+            <field name="fieldName">
+                <column name="property_name" length="200"/>
+            </field>
+            <field name="valueType">
+                <column name="value_type" length="50"/>
+            </field>
+        </class>
+
+    </package>
+
+</orm>
