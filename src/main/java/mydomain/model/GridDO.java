@@ -2,9 +2,6 @@ package mydomain.model;
 
 import java.util.Set;
 
-import javax.jdo.annotations.PersistenceCapable;
-
-@PersistenceCapable
 public final class GridDO {
 
     private int id;

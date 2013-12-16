@@ -1,8 +1,5 @@
 package mydomain.model;
 
-import javax.jdo.annotations.PersistenceCapable;
-
-@PersistenceCapable
 public final class GridColumnDO {
 
     private int id;
